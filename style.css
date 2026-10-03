@@ -102,6 +102,79 @@ nav a:hover {
     font-size: 24px;
     margin-bottom: 15px;
 }
+#projects > p {
+    max-width: 700px;
+    margin: 0 auto 30px;
+}
+.project-filters button {
+    padding: 10px 18px;
+    margin:5px;
+    border:none;
+    border-radius: 5px;
+    background-color: #222222;
+    color: white;
+    cursor: pointer;
+}
+.project-filters button:hover {
+    opacity: 0.8;
+}
+
+.projects-container {
+    max-width:1000px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+}
+
+.project-card {
+    padding: 25px;
+    background-color: white;
+    border-radius: 10px;
+    text-align:left;
+}
+.project-card h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+.project-card p {
+    margin-bottom: 15px;
+}
+
+.project-card a {
+    color: #222222;
+    font-weight:bold;
+    text-decoration:none;
+}
+.project-card a:hover {
+    text-decoration:underline;
+}
+#services {
+    padding: 60px 20px;
+    background-color: white;
+    text-align: center;
+}
+
+#services h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+.services-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.services-card {
+    padding: 25px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+}
+.services-card h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
 #Contact {
     padding: 60px 20px;
     background-color: #f4f4f4;
@@ -109,7 +182,43 @@ nav a:hover {
 }
 #Contact h2 {
     font-size: 32px;
+    margin-bottom: 30px;
+}
+#contact-form {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left;
+}
+.form-group {
     margin-bottom: 20px;
+}
+.form-group label {
+    display:block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+}
+#contact-form button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    background-color: #222222;
+    color: white;
+    cursor: pointer;
+}
+#contact-form button:hover {
+    opacity: 0.8;
+}
+#form-message {
+    margin-top: 15px;
+    font-weight: bold;
 }
 
 #Contact p {
@@ -150,3 +259,71 @@ footer {
         padding: 40px 15px;
     }
 }
+
+.projects-container,
+.services-container {
+    grid-template-columns: 1fr;
+}
+.project-card,
+.services-card {
+    text-align: center;
+}
+
+#projects-hero {
+    padding: 60px 20px;
+    background-color: white;
+    text-align: center;
+}
+#projects-hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+#projects-hero p {
+    max-width: 700px;
+    margin: 0 auto;
+}
+#skills {
+    padding: 60px 20px;
+    background-color: white;
+    text-align: center;
+}
+
+#skills h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.skills-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.skill h3 {
+    margin-bottom: 8px;
+}
+
+.skill-bar {
+    width: 100%;
+    height: 28px;
+    background-color: #e0e0e0;
+    border: 1px solid #bbbbbb;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.skill-level {
+    height:100%;
+    background-color:#222222;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    padding-right:10px;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.html-level { width: 80%; }
+.css-level { width: 80%; }
+.javascript-level { width: 60%; }
+.git-level { width: 70%; }
+.responsive-level { width: 75%; }
