@@ -19,7 +19,8 @@ filterButtons.forEach(function(button) {
 const contactForm = document.getElementById("contact-form");
 const formMessage = document.getElementById("form-message");
 
-contactForm.addEventListener("submit", function(event) {
+if (contactForm) {
+    contactForm.addEventListener("submit", function(event) {
     event.preventDefault();
     const name=document.getElementById("name").value;
     const email=document.getElementById("email").value;
@@ -31,15 +32,21 @@ contactForm.addEventListener("submit", function(event) {
         formMessage.textContent = "Please fill in all fields.";
        return;
 }
-formMessage.textContent = "Thank you for your message Your message has been submitted.";
-contactForm.requestFullscreen();
+if (formMessage)
+    formMessage.textContent = "Thank you for your message Your message has been submitted.";
+contactForm.reset();
 });
+}
 function fetchQuote() {
     const quoteText = document.getElementById("quote-text");
     const quoteAuthor = document.getElementById("quote-author");
     
+    if (quoteText) {
     quoteText.textContent = "Loading quote...";
+    }
+    if (quoteAuthor){
     quoteAuthor.textContent = "";
+    }
 
     fetch('https://dummyjson.com/quotes/random')
     .then(response => {
@@ -49,8 +56,8 @@ function fetchQuote() {
         return response.json();
     })
     .then(data => {
-        quoteText.textContent = data.quote;
-        quoteAuthor.textContent = `- ${data.author}`;
+       if (quoteText) quoteText.textContent = data.quote;
+       if (quoteAuthor) quoteAuthor.textContent = `- ${data.author}`;
     })
     .catch(error => {
         console.error("Error fetching quote:", error);
@@ -65,5 +72,6 @@ document.addEventListener("DOMContentLoaded", ()  => {
 
 const newQuoteBtn = document.getElementById("new-quote-btn");
 if (newQuoteBtn) {
-
- newQuoteBtn.addEventListener("click",fetchQuote);}
+newQuoteBtn.addEventListener("click",fetchQuote);
+}
+ fetchQuote();
