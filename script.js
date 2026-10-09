@@ -33,6 +33,38 @@ contactForm.addEventListener("submit", function(event) {
 }
 formMessage.textContent = "Thank you for your message Your message has been submitted.";
 
+function fetchQuote() {
+    const quoteText = document.getElementById("quote-text");
+    const quoteAuthor = document.getElementById("quote-author");
+    //1.Loading state
+    quoteText.textContent = "Loading quote...";
+    quoteAuthor.textContent = "";
+    //2. Fetch API Data
+    fetch('https://dummyjson.com/quotes/random')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+        return response.json();
+    })
+    .then(data => {
+        quoteText.textContent = data.quote;
+        quoteAuthor.textContent = `- ${data.author}`;
+    })
+    .catch(error => {
+        console.error("Error fetching quote:", error);
+        quoteText.textContent = "Failed to load quote.";
+        quoteAuthor.textContent = "";
+    });
+}
+// Run on page load
+document.addEventListener("DOMContentLoaded", () => {
+    fetchQuote();
+});
+const newQuoteBtn = document.getElementById("new-quote-btn");
+if (newQuoteBtn) {
+    newQuoteBtn.addEventListener("click", fetchQuote);
+}
   contactForm.reset();
 
 });

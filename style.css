@@ -327,3 +327,34 @@ footer {
 .javascript-level { width: 60%; }
 .git-level { width: 70%; }
 .responsive-level { width: 75%; }
+
+.quote-card {
+    background: color #f4f4f9;
+    border-left: 5px solid #007bff;
+    padding: 20px;
+    margin: 30px auto;
+    max-width: 600px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+#quote-text {
+    font-style:italic;
+    font-size: 1.1rem;
+    color: #333;
+}
+#quote-author {
+    font-weight: bold;
+    color: #007bff;
+    margin-top: 10px;
+}
+
+new-quote-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin-top: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
