@@ -16,62 +16,75 @@ filterButtons.forEach(function(button) {
         });
     });
 });
+
 const contactForm = document.getElementById("contact-form");
 const formMessage = document.getElementById("form-message");
 
 if (contactForm) {
     contactForm.addEventListener("submit", function(event) {
-    event.preventDefault();
-    const name=document.getElementById("name").value;
-    const email=document.getElementById("email").value;
-    const message=document.getElementById("message").value;
+        event.preventDefault();
 
-    if(name === "" || email === "" || 
-        message ===
-"") {
-        formMessage.textContent = "Please fill in all fields.";
-       return;
-}
-if (formMessage)
-    formMessage.textContent = "Thank you for your message Your message has been submitted.";
-contactForm.reset();
-});
-}
-function fetchQuote() {
-    const quoteText = document.getElementById("quote-text");
-    const quoteAuthor = document.getElementById("quote-author");
-    
-    if (quoteText) {
-    quoteText.textContent = "Loading quote...";
-    }
-    if (quoteAuthor){
-    quoteAuthor.textContent = "";
-    }
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const message = document.getElementById("message").value;
 
-    fetch('https://dummyjson.com/quotes/random')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error("Network response was not ok");
+        if (name === "" || email === "" || message === "") {
+            if (formMessage) {
+                formMessage.textContent = "Please fill in all fields.";
+            }
+            return;
         }
-        return response.json();
-    })
-    .then(data => {
-       if (quoteText) quoteText.textContent = data.quote;
-       if (quoteAuthor) quoteAuthor.textContent = `- ${data.author}`;
-    })
-    .catch(error => {
-        console.error("Error fetching quote:", error);
-        quoteText.textContent = "Failed to load quote.";
-        quoteAuthor.textContent = "";
+
+        if (formMessage) {
+            formMessage.textContent = "Thank you for your message. Your message has been submitted.";
+        }
+
+        contactForm.reset();
     });
 }
 
-document.addEventListener("DOMContentLoaded", ()  => {
-    fetchQuote() ;
+function fetchQuote() {
+    const quoteText = document.getElementById("quote-text");
+    const quoteAuthor = document.getElementById("quote-author");
+
+    if (quoteText) {
+        quoteText.textContent = "Loading quote...";
+    }
+    if (quoteAuthor) {
+        quoteAuthor.textContent = "";
+    }
+
+    fetch("https://dummyjson.com/quotes/random")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (quoteText) {
+                quoteText.textContent = data.quote;
+            }
+            if (quoteAuthor) {
+                quoteAuthor.textContent = `- ${data.author}`;
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching quote:", error);
+            if (quoteText) {
+                quoteText.textContent = "Failed to load quote.";
+            }
+            if (quoteAuthor) {
+                quoteAuthor.textContent = "";
+            }
+        });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    fetchQuote();
 });
 
 const newQuoteBtn = document.getElementById("new-quote-btn");
 if (newQuoteBtn) {
-newQuoteBtn.addEventListener("click",fetchQuote);
+    newQuoteBtn.addEventListener("click", fetchQuote);
 }
- fetchQuote();
