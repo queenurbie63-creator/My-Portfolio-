@@ -32,14 +32,15 @@ contactForm.addEventListener("submit", function(event) {
        return;
 }
 formMessage.textContent = "Thank you for your message Your message has been submitted.";
-
+contactForm.requestFullscreen();
+});
 function fetchQuote() {
     const quoteText = document.getElementById("quote-text");
     const quoteAuthor = document.getElementById("quote-author");
-    //1.Loading state
+    
     quoteText.textContent = "Loading quote...";
     quoteAuthor.textContent = "";
-    //2. Fetch API Data
+
     fetch('https://dummyjson.com/quotes/random')
     .then(response => {
         if (!response.ok) {
@@ -57,14 +58,12 @@ function fetchQuote() {
         quoteAuthor.textContent = "";
     });
 }
-// Run on page load
-document.addEventListener("DOMContentLoaded", () => {
-    fetchQuote();
+
+document.addEventListener("DOMContentLoaded", ()  => {
+    fetchQuote() ;
 });
+
 const newQuoteBtn = document.getElementById("new-quote-btn");
 if (newQuoteBtn) {
-    newQuoteBtn.addEventListener("click", fetchQuote);
-}
-  contactForm.reset();
 
-});
+ newQuoteBtn.addEventListener("click",fetchQuote);}
